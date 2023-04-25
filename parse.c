@@ -10,7 +10,7 @@
  */
 int parse(const char *format, va_list args)
 {
-	int i, j, p_func_result, printed_chars_size = 0;
+	int i, j, k, p_func_result, printed_chars_size = 0;
 
 	print_t p_funcs[] = {
 			{"c", print_char},
@@ -41,19 +41,23 @@ int parse(const char *format, va_list args)
 				}
 			}
 
-			if (p_funcs[j].type == NULL && format[i + 1] != ' ')
+			/* Skip format specifiers (c, s, %...) & spaces */
+			if (p_funcs[j].type == NULL)
 			{
-				if (format[i + 1] != '\0')
+				k = i + 1;
+				while (format[k] != '\0')
 				{
-					_putchar(format[i + 1]);
-					printed_chars_size += 1;
+					if (format[k] == ' ')
+						k++;
+					else
+					{
+						i = k - 1;
+						break;
+					}
 				}
-				else
-					return (-1);
 			}
-
-			/* Skip format specifiers: c, s, %... */
-			i++;
+			else
+				i++;
 		}
 	}
 
