@@ -48,6 +48,8 @@ int parse(const char *format, va_list args)
 					_putchar(format[i + 1]);
 					printed_chars_size += 1;
 				}
+				else
+					return (-1);
 			}
 
 			/* Skip format specifiers: c, s, %... */
