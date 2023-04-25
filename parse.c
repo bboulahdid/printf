@@ -41,6 +41,15 @@ int parse(const char *format, va_list args)
 				}
 			}
 
+			if (p_funcs[j].type == NULL && format[i + 1] != ' ')
+			{
+				if (format[i + 1] != '\0')
+				{
+					_putchar(format[i + 1]);
+					printed_chars_size += 1;
+				}
+			}
+
 			/* Skip format specifiers: c, s, %... */
 			i++;
 		}
