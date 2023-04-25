@@ -10,7 +10,7 @@
  */
 int parse(const char *format, va_list args)
 {
-	int i, j, k, p_func_result, printed_chars_size = 0;
+	int i, j, p_func_result, printed_chars_size = 0;
 	print_t p_funcs[] = {
 			{"c", print_char},
 			{"s", print_string},
